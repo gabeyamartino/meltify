@@ -1,0 +1,1 @@
+Welcome to Meltify, an app that allows you to run a beautiful audio visualizer alongside your favorite tracks.
