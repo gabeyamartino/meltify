@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-
 app.post('/login', (req, res) => {
   let code = req.body.code;
   const spotifyApi = new SpotifyWebApi({
@@ -30,17 +29,11 @@ app.post('/login', (req, res) => {
         expiresIn: data.body.expires_in})
       })
         .catch((err) => {
-          console.log(err)
           res.sendStatus(400);
         })
   })
 
-
-
-
-
   app.post('/refresh', (req, res) => {
-    console.log('hi')
     const refreshToken = req.body.refreshToken;
     const spotifyApi = new SpotifyWebApi({
       redirectUri: 'http://localhost:5173',
@@ -63,36 +56,40 @@ app.post('/login', (req, res) => {
   });
 
 
+
+/////////////
+//SONGS ROUTE
+/////////////
+
   app.get('/songs', (req, res) => {
     const token = req.query.Authorization
-
-    const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
-    // {
-    //   redirectUri: 'http://localhost:5173',
-    //   clientId: process.env.SPOTIFY_CLIENT_ID,
-    //   clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-    // }
-
     const spotifyApi = new SpotifyWebApi()
-    spotifyApi.setAccessToken(token);
+    spotifyApi.setAccessToken(token)
 
-    const me = spotifyApi.getMe()
-
-    spotifyApi.getMyTopTracks({limit: 50})
-     .then((data) => {res.json(data.body.items)})
-     .catch((err) => console.log(err))
-
-    // axios.get(TOP_TRACKS_ENDPOINT, {
-    //   params: {
-    //     'Authorization': `${token}`,
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
-    // .then((data) => {console.log(data)})
-
+    spotifyApi.getMyTopTracks({limit: 50, time_range: 'long_term'})
+     .then((data) => {res.json(data.body.items); console.log(data.body.items[0])})
+     .catch((err) => console.log("error in my SONGS REQUESTS"))
   })
 
 
+////////////////
+//FEATURES ROUTE
+////////////////
+
+app.get('/features', (req, res) => {
+
+  const token = req.query.Authorization
+  const spotifyApi = new SpotifyWebApi()
+  spotifyApi.setAccessToken(token)
+
+  spotifyApi.getAudioFeaturesForTrack(req.query.TrackId)
+    .then((data) => {
+      res.send(data.body);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 
 app.listen(port, () => {
