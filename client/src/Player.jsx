@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
 
 
-const Player = ({ accessToken, trackUri }) => {
+const Player = ({ accessToken, trackUri, topTracks }) => {
 
   const [play, setPlay] = useState(false);
+
+  const trackUris = topTracks.map((track)=> track.uri)
+  console.log(trackUris)
 
   useEffect(() => setPlay(true), [trackUri]);
 
@@ -17,7 +20,7 @@ const Player = ({ accessToken, trackUri }) => {
     callback={state => {
       if (!state.isPlaying) setPlay(true)
     }}
-    uris={trackUri ? [trackUri] : []}
+    uris={trackUri ? trackUris.slice(trackUris.indexOf(trackUri)) : []}
     autoPlay={play}
   />
   </div>)

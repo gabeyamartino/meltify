@@ -11,9 +11,13 @@ import { ExpandMoreOutlined } from "@material-ui/icons";
 const DashContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100vh;
-  max-height: 100vh;
+
+`;
+
+const InnerDash = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
 
 const PlayerContainer = styled.div`
@@ -72,28 +76,36 @@ console.log("IN DASHBOARD,", playing)
 
   return (
     <DashContainer>
-      <div className="dash-cont">
-        <TrackList
-          topTracks={topTracks.loaded}
-          chooseTrack={chooseTrack}
-          accessToken={accessToken}
-          getFeatures={getFeatures}
+      <InnerDash>
+        <div>
+          <TrackList
+            topTracks={topTracks.loaded}
+            chooseTrack={chooseTrack}
+            accessToken={accessToken}
+            getFeatures={getFeatures}
           />
-        <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
-        Song Features
-        </AccordionSummary>
+        </div>
+        <div>
+          <Accordion
+            style={{marginTop: "20px", maxWidth: "60vw"}}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreOutlined />}
+            >
+              Song Features
+          </AccordionSummary>
 
-        <AccordionDetails>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-        sit amet blandit leo lobortis eget.
-        </AccordionDetails>
-        </Accordion>
-      </div>
+          <AccordionDetails>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+          sit amet blandit leo lobortis eget.
+          </AccordionDetails>
+          </Accordion>
+        </div>
+      </InnerDash>
       <PlayerContainer>
         <Player
           accessToken={accessToken}
           trackUri={playing?.uri}
+          topTracks={topTracks.loaded}
         />
       </PlayerContainer>
     </DashContainer>

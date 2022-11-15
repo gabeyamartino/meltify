@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const ListContainer = styled.div`
 max-height: 85vh;
-max-width: 300px;
+max-width: 400px;
 overflow: scroll;
 `
 
