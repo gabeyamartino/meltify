@@ -136,7 +136,12 @@ console.log("IN DASHBOARD,", playing)
                 <br/>
                 <div>Time Signature: {trackFeatures.time_signature}/4</div>
                 <br/>
-
+                <div>Danceability <small>(0 - 100)</small>: {Math.round(trackFeatures.danceability * 100)}</div>
+                <br/>
+                <div>Energy <small>(0 - 100)</small>: {Math.round(trackFeatures.energy * 100)}</div>
+                <br/>
+                <div>Valence <small>(0 - 100)</small>: {Math.round(trackFeatures.valence * 100)}</div>
+                <br/>
               </div>
               : <div>Please select a song</div>}
           </AccordionDetails>
