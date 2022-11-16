@@ -4,6 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const { save } = require('./db.js')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/login', (req, res) => {
   let code = req.body.code;
+
   const spotifyApi = new SpotifyWebApi({
     redirectUri: 'http://localhost:5173',
     clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -67,8 +69,8 @@ app.post('/login', (req, res) => {
     spotifyApi.setAccessToken(token)
 
     spotifyApi.getMyTopTracks({limit: 50, time_range: 'long_term'})
-     .then((data) => {res.json(data.body.items); console.log(data.body.items[0])})
-     .catch((err) => console.log("error in my SONGS REQUESTS"))
+     .then((data) => {res.json(data.body.items); save({songName: data.body.items[0].name})})
+     .catch((err) => console.log(err))
   })
 
 

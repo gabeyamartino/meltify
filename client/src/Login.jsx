@@ -5,15 +5,25 @@ const AUTH_URL = "https:/accounts.spotify.com/authorize?client_id=2383676e4ea641
 
 const LoginContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 `
 
+const Title = styled.div`
+  font: Sofia;
+  font-weight: bold;
+  font-size: 10em;
+  margin-bottom: 80px
+`;
+
 const Login = () => {
 
   return (
     <LoginContainer>
+    <Title>Statify</Title>
+    <br/>
     <a className="btn btn-success btn-lg" href={AUTH_URL}>Login with Spotify</a>
     </LoginContainer>
   )

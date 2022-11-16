@@ -63,8 +63,6 @@ const Dashboard = ({code}) => {
     .then((response) => {
       let temp = {...response.data}
      setTrackFeatures(temp)
-     console.log(temp)
-
     })
     .catch((err) => {
       console.log(err);
@@ -80,8 +78,6 @@ const Dashboard = ({code}) => {
       getSongs();
     }
   }, [accessToken]);
-console.log("IN DASHBOARD,", playing)
-
 
   const songKeys = {
     0: 'C',
@@ -101,10 +97,6 @@ console.log("IN DASHBOARD,", playing)
   const majMin = {
     0: 'Minor',
     1: 'Major'
-  }
-
-  const danceObj = {
-    0.0: 'Not danceable'
   }
 
   return (
@@ -128,19 +120,19 @@ console.log("IN DASHBOARD,", playing)
           <AccordionDetails>
             {Object.keys(trackFeatures).length ?
               <div>
-                <div>Title: {playing.name}</div>
+                <div><b>Title:</b> {playing.name}</div>
                 <br/>
-                <div>Key: {songKeys[trackFeatures.key]} {majMin[trackFeatures.mode]}</div>
+                <div><b>Key:</b> {songKeys[trackFeatures.key]} {majMin[trackFeatures.mode]}</div>
                 <br/>
-                <div>Tempo: {Math.floor(trackFeatures.tempo)} bpm</div>
+                <div><b>Tempo:</b> {Math.floor(trackFeatures.tempo)} bpm</div>
                 <br/>
-                <div>Time Signature: {trackFeatures.time_signature}/4</div>
+                <div><b>Time Signature:</b> {trackFeatures.time_signature}/4</div>
                 <br/>
-                <div>Danceability <small>(0 - 100)</small>: {Math.round(trackFeatures.danceability * 100)}</div>
+                <div><b>Danceability <small>(0 - 100)</small>:</b>  {Math.round(trackFeatures.danceability * 100)}</div>
                 <br/>
-                <div>Energy <small>(0 - 100)</small>: {Math.round(trackFeatures.energy * 100)}</div>
+                <div><b>Energy <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.energy * 100)}</div>
                 <br/>
-                <div>Valence <small>(0 - 100)</small>: {Math.round(trackFeatures.valence * 100)}</div>
+                <div><b>Valence <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.valence * 100)}</div>
                 <br/>
               </div>
               : <div>Please select a song</div>}
