@@ -7,7 +7,6 @@ const Player = ({ accessToken, trackUri, topTracks }) => {
   const [play, setPlay] = useState(false);
 
   const trackUris = topTracks.map((track)=> track.uri)
-  console.log(trackUris)
 
   useEffect(() => setPlay(true), [trackUri]);
 
@@ -21,7 +20,7 @@ const Player = ({ accessToken, trackUri, topTracks }) => {
       if (!state.isPlaying) setPlay(true)
     }}
     uris={trackUri ? trackUris.slice(trackUris.indexOf(trackUri)) : []}
-    autoPlay={play}
+    play={play}
   />
   </div>)
 }

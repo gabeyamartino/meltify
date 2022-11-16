@@ -23,7 +23,8 @@ const TrackListEntry = ({ track, chooseTrack, accessToken, getFeatures }) => {
 
 
   return (
-    <TrackContainer onClick={()=> {handlePlay(); getFeatures(track)}}>
+    <TrackContainer
+    onClick={()=> {handlePlay(); getFeatures(track)}}>
       <img src={track.album.images[0].url} style={{height: '64px', width: '64px', margin: '4px 8px 4px 0'}} />
       <div>
         <div>{track.name}</div>

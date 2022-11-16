@@ -33,7 +33,6 @@ const useAuth = (code) => {
         .then((res) => {
             setAccessToken(res.data.accessToken);
             setExpiresIn(res.data.expiresIn);
-
           })
         .catch((err) => {
           console.log(err)

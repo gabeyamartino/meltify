@@ -30,6 +30,8 @@ const Dashboard = ({code}) => {
 
   const [topTracks, setTopTracks] = useState({ loaded: [] });
   const [playing, setPlaying] = useState('');
+  const [trackFeatures, setTrackFeatures] = useState({})
+
 
   const accessToken = useAuth(code);
 
@@ -59,7 +61,13 @@ const Dashboard = ({code}) => {
       }
     })
     .then((response) => {
-      console.log(response)
+      let temp = {...response.data}
+     setTrackFeatures(temp)
+     console.log(temp)
+
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
 
@@ -74,6 +82,31 @@ const Dashboard = ({code}) => {
   }, [accessToken]);
 console.log("IN DASHBOARD,", playing)
 
+
+  const songKeys = {
+    0: 'C',
+    1: 'C♯/D♭',
+    2: 'D',
+    3: 'D♯/E♭',
+    4: 'E',
+    5: 'F',
+    6: 'F♯/G♭',
+    7: 'G',
+    8: 'G♯/A♭',
+    9: 'A',
+    10: 'A♯/B♭',
+    11: 'B'
+  }
+
+  const majMin = {
+    0: 'Minor',
+    1: 'Major'
+  }
+
+  const danceObj = {
+    0.0: 'Not danceable'
+  }
+
   return (
     <DashContainer>
       <InnerDash>
@@ -87,16 +120,25 @@ console.log("IN DASHBOARD,", playing)
         </div>
         <div>
           <Accordion
-            style={{marginTop: "20px", maxWidth: "60vw"}}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreOutlined />}
-            >
-              Song Features
+            style={{marginTop: "20px", width: "60vw"}}>
+          <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
+            Song Features
           </AccordionSummary>
 
           <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-          sit amet blandit leo lobortis eget.
+            {Object.keys(trackFeatures).length ?
+              <div>
+                <div>Title: {playing.name}</div>
+                <br/>
+                <div>Key: {songKeys[trackFeatures.key]} {majMin[trackFeatures.mode]}</div>
+                <br/>
+                <div>Tempo: {Math.floor(trackFeatures.tempo)} bpm</div>
+                <br/>
+                <div>Time Signature: {trackFeatures.time_signature}/4</div>
+                <br/>
+
+              </div>
+              : <div>Please select a song</div>}
           </AccordionDetails>
           </Accordion>
         </div>
