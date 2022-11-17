@@ -34,7 +34,7 @@ const AccordionContainer = styled.div`
 
 const HotDog = styled.img`
 transition: transform .7s ease-in-out;
-
+z-index: 1;
   &:hover {
     transform: rotate(360deg)
   }
