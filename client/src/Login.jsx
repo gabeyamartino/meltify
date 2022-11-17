@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
     <LoginContainer>
-    <Title>Statify</Title>
+    <Title>Dogify</Title>
     <br/>
     <a className="btn btn-success btn-lg" href={AUTH_URL}>Login with Spotify</a>
     </LoginContainer>

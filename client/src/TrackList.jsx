@@ -3,7 +3,7 @@ import TrackListEntry from './TrackListEntry.jsx';
 import styled from 'styled-components';
 
 const ListContainer = styled.div`
-max-height: 85vh;
+max-height: 83vh;
 max-width: 500px;
 overflow: scroll;
 `
@@ -12,7 +12,7 @@ const TrackList = ({ topTracks, chooseTrack, accessToken, getFeatures }) => {
   return (
     <div style={{width: '100%'}}>
       <div>
-        <h2>Your Top Tracks</h2>
+        <h2 style={{paddingTop: "40px"}}>Your Top Tracks</h2>
         <ListContainer>
           {topTracks.map((track, i) => (
           <TrackListEntry
