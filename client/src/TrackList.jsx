@@ -12,7 +12,7 @@ const TrackList = ({ topTracks, chooseTrack, accessToken, getFeatures }) => {
   return (
     <div style={{width: '100%'}}>
       <div>
-        <h2 style={{paddingTop: "40px"}}>Your Top Tracks</h2>
+        <h2 style={{paddingTop: "28px"}}>Your Top Tracks</h2>
         <ListContainer>
           {topTracks.map((track, i) => (
           <TrackListEntry

@@ -33,11 +33,11 @@ const AccordionContainer = styled.div`
 `;
 
 const HotDog = styled.img`
-transition: transform .7s ease-in-out;
-z-index: 1;
-  &:hover {
-    transform: rotate(360deg)
-  }
+  transition: transform 5s ease-in-out;
+  z-index: 1;
+    &:hover {
+      transform: rotate(3600deg)
+    }
 `;
 
 const Dashboard = ({code}) => {
@@ -127,7 +127,7 @@ const Dashboard = ({code}) => {
         <AccordionContainer>
           <HotDog src="../../hotdog.png" style={{marginTop: "40px"}}></HotDog>
           <Accordion
-            style={{width: "60vw"}}>
+            style={{width: "40vw"}}>
             <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
               Song Features
             </AccordionSummary>
