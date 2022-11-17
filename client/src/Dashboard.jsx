@@ -12,7 +12,6 @@ const DashContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 `;
 
 const InnerDash = styled.div`
@@ -24,6 +23,21 @@ const PlayerContainer = styled.div`
   margin-top: auto;
   postion: fixed;
   margin-bottom: 1px;
+`;
+
+const AccordionContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const HotDog = styled.img`
+transition: transform .7s ease-in-out;
+
+  &:hover {
+    transform: rotate(360deg)
+  }
 `;
 
 const Dashboard = ({code}) => {
@@ -110,35 +124,35 @@ const Dashboard = ({code}) => {
             getFeatures={getFeatures}
           />
         </div>
-        <div>
+        <AccordionContainer>
+          <HotDog src="../../hotdog.png" style={{marginTop: "40px"}}></HotDog>
           <Accordion
-            style={{marginTop: "20px", width: "60vw"}}>
-          <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
-            Song Features
-          </AccordionSummary>
-
-          <AccordionDetails>
-            {Object.keys(trackFeatures).length ?
-              <div>
-                <div><b>Title:</b> {playing.name}</div>
-                <br/>
-                <div><b>Key:</b> {songKeys[trackFeatures.key]} {majMin[trackFeatures.mode]}</div>
-                <br/>
-                <div><b>Tempo:</b> {Math.floor(trackFeatures.tempo)} bpm</div>
-                <br/>
-                <div><b>Time Signature:</b> {trackFeatures.time_signature}/4</div>
-                <br/>
-                <div><b>Danceability <small>(0 - 100)</small>:</b>  {Math.round(trackFeatures.danceability * 100)}</div>
-                <br/>
-                <div><b>Energy <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.energy * 100)}</div>
-                <br/>
-                <div><b>Valence <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.valence * 100)}</div>
-                <br/>
-              </div>
+            style={{width: "60vw"}}>
+            <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
+              Song Features
+            </AccordionSummary>
+            <AccordionDetails>
+              {Object.keys(trackFeatures).length ?
+                <div>
+                  <div><b>Title:</b> {playing.name}</div>
+                  <br/>
+                  <div><b>Key:</b> {songKeys[trackFeatures.key]} {majMin[trackFeatures.mode]}</div>
+                  <br/>
+                  <div><b>Tempo:</b> {Math.floor(trackFeatures.tempo)} bpm</div>
+                  <br/>
+                  <div><b>Time Signature:</b> {trackFeatures.time_signature}/4</div>
+                  <br/>
+                  <div><b>Danceability <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.danceability * 100)}</div>
+                  <br/>
+                  <div><b>Energy <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.energy * 100)}</div>
+                  <br/>
+                  <div><b>Valence <small>(0 - 100)</small>:</b> {Math.round(trackFeatures.valence * 100)}</div>
+                  <br/>
+                </div>
               : <div>Please select a song</div>}
-          </AccordionDetails>
+            </AccordionDetails>
           </Accordion>
-        </div>
+        </AccordionContainer>
       </InnerDash>
       <PlayerContainer>
         <Player

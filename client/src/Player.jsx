@@ -16,9 +16,9 @@ const Player = ({ accessToken, trackUri, topTracks }) => {
   <SpotifyPlayer
     style={{width: '100%'}}
     token={accessToken}
-    callback={state => {
-      if (!state.isPlaying) setPlay(true)
-    }}
+    // callback={state => {
+    //   if (!state.isPlaying) setPlay(true)
+    // }}
     uris={trackUri ? trackUris.slice(trackUris.indexOf(trackUri)) : []}
     play={play}
   />
