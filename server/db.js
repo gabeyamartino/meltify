@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/songList')
+mongoose.connect('mongodb://0.0.0.0/songList')
 .then(() => console.log('connected'))
 .catch((err) => console.log(err));
 
