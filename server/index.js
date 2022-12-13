@@ -4,7 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const { save } = require('./db.js')
+//const { save } = require('./db.js')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -69,7 +69,7 @@ app.post('/login', (req, res) => {
     spotifyApi.setAccessToken(token)
 
     spotifyApi.getMyTopTracks({limit: 50, time_range: 'long_term'})
-     .then((data) => {res.json(data.body.items); save({songName: data.body.items[0].name})})
+     .then((data) => {res.json(data.body.items);})
      .catch((err) => console.log(err))
   })
 
