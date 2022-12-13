@@ -3,13 +3,10 @@ import SpotifyPlayer from 'react-spotify-web-playback';
 
 
 const Player = ({ accessToken, trackUri, topTracks }) => {
-
   const [play, setPlay] = useState(false);
-
   const trackUris = topTracks.map((track)=> track.uri)
 
   useEffect(() => setPlay(true), [trackUri]);
-
   if (!accessToken) return null;
   return (
     <div>

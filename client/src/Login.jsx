@@ -19,7 +19,6 @@ const Title = styled.div`
 `;
 
 const Login = () => {
-
   return (
     <LoginContainer>
     <Title>Dogify</Title>
