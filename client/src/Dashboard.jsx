@@ -46,7 +46,6 @@ const Dashboard = ({code}) => {
   const [playing, setPlaying] = useState('');
   const [trackFeatures, setTrackFeatures] = useState({})
 
-
   const accessToken = useAuth(code);
 
   const getSongs = () => {

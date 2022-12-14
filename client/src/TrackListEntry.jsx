@@ -19,7 +19,6 @@ const TrackListEntry = ({ track, chooseTrack, accessToken, getFeatures }) => {
     chooseTrack(track);
   }
 
-
   return (
     <TrackContainer
       onClick={()=> {handlePlay(); getFeatures(track)}}>
