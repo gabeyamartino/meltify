@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 import { ExpandMoreOutlined } from "@material-ui/icons";
 
-
 const DashContainer = styled.div`
   display: flex;
   flex-direction: column;
