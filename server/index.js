@@ -13,7 +13,6 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.post('/login', (req, res) => {
   let code = req.body.code;
 
@@ -57,8 +56,6 @@ app.post('/login', (req, res) => {
      });
   });
 
-
-
 /////////////
 //SONGS ROUTE
 /////////////
@@ -72,7 +69,6 @@ app.post('/login', (req, res) => {
      .then((data) => {res.json(data.body.items);})
      .catch((err) => console.log(err))
   })
-
 
 ////////////////
 //FEATURES ROUTE
@@ -92,7 +88,6 @@ app.get('/features', (req, res) => {
       console.log(err)
     })
 })
-
 
 app.listen(port, () => {
   console.log(`melting on ${port}`)
